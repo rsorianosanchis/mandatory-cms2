@@ -1,0 +1,20 @@
+datos server;
+
+5e9fb1d12784        
+agentejo/cockpit:0.9.2   
+"docker-php-entrypoi…"   
+11 hours ago        
+Up 11 hours        
+0.0.0.0:8080->80/tcp   
+cms_server_2
+
+docker cp cockpit:/var/www/html/storage .
+
+$ winpty docker exec -it cms_server_2 bash
+root@5e9fb1d12784:/var/www/html# ls
+CONTRIBUTING.md  README.md  bootstrap.php  cp           index.php  modules
+Dockerfile       addons     composer.json  defines.php  install    package.json
+LICENSE          assets     config         favicon.png  lib        storage
+root@5e9fb1d12784:/var/www/html#
+
+docker cp 5e9fb1d12784:/var/www/html/storage .
