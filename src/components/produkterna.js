@@ -1,12 +1,13 @@
 import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 //import Header from "./header.js";
+import Enkelt from "./enkelt.js";
+import Spinner from "./spinner.js";
 
 const Produkterna = () => {
-
+  const [produkterna, setProdukterna] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [produkterna,setProdukterna] = useState([]);
-  
+
   useEffect(() => {
     const getCockpitProdukterna = async () => {
       setLoading(true);
@@ -23,6 +24,21 @@ const Produkterna = () => {
   return (
     <Fragment>
       <h1 className="text-center">List av produkterna</h1>
+      <div className="row">
+        {loading ? (
+          <Spinner />
+        ) : (
+          produkterna.map(produkt => (
+            <Enkelt
+              key={produkt._id}
+              namn={produkt.namn}
+              pris={produkt.pris}
+              bild={produkt.bilder[0].path}
+              id={produkt._id}
+            />
+          ))
+        )}
+      </div>
     </Fragment>
   );
 };

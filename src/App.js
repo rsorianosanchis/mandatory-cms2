@@ -5,6 +5,7 @@ import Produkterna from "./components/produkterna.js";
 import Produkt from "./components/produkt.js";
 import Korg from "./components/korg.js";
 import Formul from "./components/formul.js";
+import Footer from "./components/footer.js";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Route path="/formul" component={Formul} />
         </Switch>
       </main>
-      <p className="mt-4 p2 text-center">rsorianosanchis@gmail.com</p>
+      <Footer/>
     </Router>
   );
 }
