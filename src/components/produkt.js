@@ -5,7 +5,8 @@ import axios from "axios";
 const Produkt = () => {
      const [loading, setLoading] = useState(false);
      
-
+  // falta poner en array  de ue efect si hay camnios en id o no
+  // falta condicional en render de , si loading es true mostrar cargando
      useEffect(() => {
         
        const getCockpitProdukterna = async () => {

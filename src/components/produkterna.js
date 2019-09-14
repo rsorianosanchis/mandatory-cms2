@@ -3,16 +3,18 @@ import axios from "axios";
 //import Header from "./header.js";
 
 const Produkterna = () => {
-  const [loading, setLoading] = useState(false);
 
+  const [loading, setLoading] = useState(false);
+  const [produkterna,setProdukterna] = useState([]);
+  
   useEffect(() => {
     const getCockpitProdukterna = async () => {
       setLoading(true);
       const result = await axios.get(
         "http://localhost:8080/api/collections/get/produkterna"
       );
-      console.log(result);
-      //storeArticles(result.data.entries);
+      console.log(result.data.entries);
+      setProdukterna(result.data.entries);
       setLoading(false);
     };
     getCockpitProdukterna();
