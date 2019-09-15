@@ -17,7 +17,7 @@ const Enkelt = ({ namn, pris, bild, id }) => {
             className=" waves-effect waves-light btn-small"
             to={`/produkt/${id}`}
           >
-            Se 
+            Mer
           </Link>
         </div>
       </div>
