@@ -3,11 +3,15 @@ import axios from "axios";
 //import Header from "./header.js";
 import Enkelt from "./enkelt.js";
 import Spinner from "./spinner.js";
+import Pagination from "./pagination.js";
 
 const Produkterna = () => {
   const [produkterna, setProdukterna] = useState([]);
   const [loading, setLoading] = useState(false);
   const [dolja,setDolja] = useState(false);
+  //
+  const [currentPage, setCurrentPage] = useState(1);
+  const [produkterPerSidan, setProdukterSidan] = useState(5);
 
   useEffect(() => {
     const getCockpitProdukterna = async () => {
@@ -26,6 +30,14 @@ const Produkterna = () => {
     console.log(e.target.checked);
     setDolja(e.target.checked);
   };
+  //
+  const indexOfLastProdukt = currentPage * produkterPerSidan;
+  const indexOfFirstProdukt = indexOfLastProdukt - produkterPerSidan;
+  const currentProdukterna = produkterna.slice(indexOfFirstProdukt, indexOfLastProdukt);
+  //change page
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+  const setAntal = antal => setProdukterSidan(antal);
+  
 
   return (
     <Fragment>
@@ -46,7 +58,7 @@ const Produkterna = () => {
         {loading ? (
           <Spinner />
         ) : (
-          produkterna.map(produkt =>
+          currentProdukterna.map(produkt =>
             dolja === true && parseInt(produkt.lagersaldo) === 0 ? (
               console.log(produkt.lagersaldo)
             ) : (
@@ -61,6 +73,14 @@ const Produkterna = () => {
           )
         )}
       </ul>
+      <div className="col">
+        <Pagination
+          produkterPerSidan={produkterPerSidan}
+          totalProdukter={produkterna.length}
+          paginate={paginate}
+          setAntal={setAntal}
+        />
+      </div>
     </Fragment>
   );
 };
