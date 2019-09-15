@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const Enkelt = ({ namn, pris, bild, id }) => {
   return (
-    <div className="col s3 m7">
-      <div className="card">
-        <span className="card-title">{namn}</span>
+    <li className="col s12 m7" refsearch={namn}>
+      <div className="card medium">
+        <span className="card-title ">{namn}</span>
         <div className="card-image">
           <img src={`http://localhost:8080/${bild}`} alt={namn} />
         </div>
@@ -13,10 +13,15 @@ const Enkelt = ({ namn, pris, bild, id }) => {
           <p>{pris} kr</p>
         </div>
         <div className="card-action">
-          <Link to={`/produkt/${id}`}>Se Detaljer</Link>
+          <Link
+            className=" waves-effect waves-light btn-small"
+            to={`/produkt/${id}`}
+          >
+            Se 
+          </Link>
         </div>
       </div>
-    </div>
+    </li>
   );
 };
 

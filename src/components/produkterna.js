@@ -7,6 +7,7 @@ import Spinner from "./spinner.js";
 const Produkterna = () => {
   const [produkterna, setProdukterna] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [dolja,setDolja] = useState(false);
 
   useEffect(() => {
     const getCockpitProdukterna = async () => {
@@ -19,26 +20,47 @@ const Produkterna = () => {
       setLoading(false);
     };
     getCockpitProdukterna();
-  }, []);
+  }, [dolja]);
+
+  const doljaProdukt = e =>{
+    console.log(e.target.checked);
+    setDolja(e.target.checked);
+  };
 
   return (
     <Fragment>
       <h1 className="text-center">List av produkterna</h1>
-      <div className="row">
+      <form action="#">
+        <p>
+          <label>
+            <input
+              type="checkbox"
+              className="filled-in"
+              onChange={doljaProdukt}
+            />
+            <span>Visa inte utan lager</span>
+          </label>
+        </p>
+      </form>
+      <ul className="row">
         {loading ? (
           <Spinner />
         ) : (
-          produkterna.map(produkt => (
-            <Enkelt
-              key={produkt._id}
-              namn={produkt.namn}
-              pris={produkt.pris}
-              bild={produkt.bilder[0].path}
-              id={produkt._id}
-            />
-          ))
+          produkterna.map(produkt =>
+            dolja === true && parseInt(produkt.lagersaldo) === 0 ? (
+              console.log(produkt.lagersaldo)
+            ) : (
+              <Enkelt
+                key={produkt._id}
+                namn={produkt.namn}
+                pris={produkt.pris}
+                bild={produkt.bilder[0].path}
+                id={produkt._id}
+              />
+            )
+          )
         )}
-      </div>
+      </ul>
     </Fragment>
   );
 };

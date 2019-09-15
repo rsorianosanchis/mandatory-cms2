@@ -3,15 +3,16 @@ import {NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
-    
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container">
-        <NavLink to="/" className="navbar-brand">
+    <nav>
+      <div className="nav-wrapper">
+        <NavLink to="/" className="brand-logo left">
           Geeks Butiken
         </NavLink>
-        <ul className="navbar-nav">
-          <li className="nav-item">
-            <NavLink to="/korg" className="nav-link">Korg</NavLink>
+        <ul id="nav-mobile" className="right">
+          <li>
+            <NavLink to="/korg">
+              <i className="material-icons">local_grocery_store</i>
+            </NavLink>
           </li>
         </ul>
       </div>
