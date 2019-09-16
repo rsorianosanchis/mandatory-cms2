@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Fragment} from 'react';
 
 function Pagination({ produkterPerSidan, totalProdukter, paginate,setAntal}) {
     const pageNumbers = [];
@@ -6,7 +6,7 @@ function Pagination({ produkterPerSidan, totalProdukter, paginate,setAntal}) {
         pageNumbers.push(i);     
     }
     return (
-      <nav>
+      <Fragment>
         <div className="form-group">
           <label htmlFor="exampleSelect2">
             <p>Välja antal per sidan</p>
@@ -32,23 +32,25 @@ function Pagination({ produkterPerSidan, totalProdukter, paginate,setAntal}) {
             <option>100</option>
           </select>
         </div>
-        <ul className="pagination">
-          {pageNumbers.map(number => (
-            <li key={number} className="page-item">
-              <a
-                onClick={e => {
-                  e.preventDefault();
-                  paginate(number);
-                }}
-                href="!#"
-                className="page-link"
-              >
-                {number}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+        <div>
+          <ul className="pagination">
+            {pageNumbers.map(number => (
+              <li key={number} className="page-item">
+                <a
+                  onClick={e => {
+                    e.preventDefault();
+                    paginate(number);
+                  }}
+                  href="!#"
+                  className="page-link"
+                >
+                  {number}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Fragment>
     );
 }
 export default Pagination;
