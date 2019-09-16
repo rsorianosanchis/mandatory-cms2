@@ -1,20 +1,30 @@
 import React, { Fragment,useState } from "react";
+import { Link, Redirect } from "react-router-dom";
+import Bekraft from "./modal.js";
+
 //import Header from "./header.js";
 
 const Formul = () => {
   const [namn,setNamn] = useState('');
   const [adress, setAdress] = useState("");
+
+  const [slut,setSlut] = useState(false)
   const handleSubmit = e=>{
     e.preventDefault();
     // aqui lanzaremos el modal de confirmacion de pedido con los datos
     // aqui borraremos la cesta de la compra, quizas pasando una funcion desde cesta
     console.log(namn);
     console.log(adress);
+    setSlut(true);
+
     
     
-  }
+    }
+    
+  
 
   return (
+    !slut?
     <Fragment>
       <h3 className="text-center">Bästelnings Formulär</h3>
       <div className="row">
@@ -52,7 +62,7 @@ const Formul = () => {
             </div>
           </div>
           <button
-            className="btn waves-effect waves-light"
+            className="btn-small waves-effect waves-light"
             type="submit"
             name="action"
           >
@@ -62,6 +72,9 @@ const Formul = () => {
         </form>
       </div>
     </Fragment>
+    :<Bekraft 
+    namn = {namn}
+    adress = {adress}/>
   );
 };
 

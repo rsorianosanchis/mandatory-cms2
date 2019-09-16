@@ -5,6 +5,7 @@ import Produkterna from "./components/produkterna.js";
 import Produkt from "./components/produkt.js";
 import Korg from "./components/korg.js";
 import Formul from "./components/formul.js";
+import Bekraft from "./components/modal.js";
 import Footer from "./components/footer.js";
 
 function App() {
@@ -17,9 +18,10 @@ function App() {
           <Route path="/produkt/:id" component={Produkt} />
           <Route path="/korg" component={Korg} />
           <Route path="/formul" component={Formul} />
+          <Route path="/modal" component={Bekraft} />
         </Switch>
       </main>
-      <Footer/>
+      <Footer />
     </Router>
   );
 }
