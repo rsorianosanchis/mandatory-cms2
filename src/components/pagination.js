@@ -9,7 +9,7 @@ function Pagination({ produkterPerSidan, totalProdukter, paginate,setAntal}) {
       <Fragment>
         <div className="form-group">
           <label htmlFor="exampleSelect2">
-            <p>Välja antal per sidan</p>
+            <h6>Välja antal per sidan</h6>
           </label>
           <select
             onChange={e => {

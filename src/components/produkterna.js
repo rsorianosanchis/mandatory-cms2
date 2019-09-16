@@ -41,7 +41,7 @@ const Produkterna = () => {
 
   return (
     <Fragment>
-      <h1 className="text-center">List av produkterna</h1>
+      <h3 className="text-center" >List av produkterna</h3>
       <form action="#">
         <p>
           <label>
@@ -50,7 +50,9 @@ const Produkterna = () => {
               className="filled-in"
               onChange={doljaProdukt}
             />
-            <span>Visa inte utan lager</span>
+            <span style={{fontSize:'16px'}}>
+              Visa inte utan lager
+            </span>
           </label>
         </p>
       </form>
