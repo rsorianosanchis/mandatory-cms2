@@ -3,6 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import Spinner from "./spinner.js";
 import Detaljerat from "./detaljerat.js";
+import Recensioner from './recensioner.js';
 
 
 const Produkt = props => {
@@ -43,7 +44,8 @@ const Produkt = props => {
   ) : (
     <Fragment>
       <h1 className="text-center">Produktens detalj</h1>
-      <Detaljerat produktObj= {produkt}/>
+      <Detaljerat produktObj={produkt} />
+      <Recensioner produktId={produkt._id} recensioner={recensioner} />
     </Fragment>
   );
 };
