@@ -1,31 +1,25 @@
-import React, {useState,useEffect, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 //import { Link, Redirect } from "react-router-dom";
 const ReactMarkdown = require("react-markdown");
 
 const Detaljerat = ({ produktObj }) => {
-    const [gallery,setGallery] = useState([])
+  const [gallery, setGallery] = useState([]);
 
+  useEffect(() => {
+    setGallery([]);
     let urlImg = produktObj.bilder;
-    console.log(typeof urlImg);
-    console.log(urlImg);
-    
+    //console.log(typeof urlImg);
+    //console.log(urlImg);
     for (const key in urlImg) {
       if (urlImg.hasOwnProperty(key)) {
         const item = urlImg[key].path;
         console.log(item);
-        gallery.push(item)
+        gallery.push(item);
       }
     }
-
     console.log(gallery);
-    
-    
+  }, []);
 
-    
-    
-
-    
-    
   return (
     <div className="card mb-3">
       <h3 className="card-header">{produktObj.namn}</h3>
@@ -36,13 +30,13 @@ const Detaljerat = ({ produktObj }) => {
         </h6>
       </div>
 
-      {/* {gallery.map(bild => (
-        <img
+      {gallery.map(url => {
+        return <img
           style={{ height: "200px", width: "30%", display: "block" }}
-          src={"http://localhost:8080/"+ bild.path}
+          src={`http://localhost:8080/${url}`}
           alt={produktObj.namn}
-        />
-      ))} */}
+        />}
+      )}
 
       {/* {produktObj.bilder.map(bild=>
           <img
