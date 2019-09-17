@@ -7,19 +7,11 @@ const Detaljerat = ({ produktObj }) => {
 
   useEffect(() => {
     setGallery([]);
-    let urlImg = produktObj.bilder;
-    //console.log(typeof urlImg);
-    //console.log(urlImg);
-    for (const key in urlImg) {
-      if (urlImg.hasOwnProperty(key)) {
-        const item = urlImg[key].path;
-        console.log(item);
-        gallery.push(item);
-      }
-    }
-    console.log(gallery);
+    setGallery(produktObj.bilder)
+    
+   
   }, []);
-
+  
   return (
     <div className="card mb-3">
       <h3 className="card-header">{produktObj.namn}</h3>
@@ -29,33 +21,17 @@ const Detaljerat = ({ produktObj }) => {
           I lager: {produktObj.lagersaldo}
         </h6>
       </div>
-
-      {gallery.map(url => {
-        return <img
-          style={{ height: "200px", width: "30%", display: "block" }}
-          src={`http://localhost:8080/${url}`}
-          alt={produktObj.namn}
-        />}
-      )}
-
-      {/* {produktObj.bilder.map(bild=>
+      <div className='row'>
+        {gallery.map((item, index) => (
           <img
+            className="col"
+            key={index}
             style={{ height: "200px", width: "30%", display: "block" }}
-            src={`http://localhost:8080/${bild.path}`}
+            src={`http://localhost:8080/${item.path}`}
             alt={produktObj.namn}
           />
-
-      )} */}
-      {/* <img
-        style={{ height: "200px", width: "30%", display: "block" }}
-        src={`http://localhost:8080/${produktObj.bilder[1].path}`}
-        alt={produktObj.namn}
-      />
-      <img
-        style={{ height: "200px", width: "30%", display: "block" }}
-        src={`http://localhost:8080/${produktObj.bilder[2].path}`}
-        alt={produktObj.namn}
-      /> */}
+        ))}
+      </div>
       <div className="card-body">
         <ReactMarkdown className="card-text">
           {produktObj.beskrivning}

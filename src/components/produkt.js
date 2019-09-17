@@ -6,7 +6,7 @@ import Detaljerat from "./detaljerat.js";
 
 
 const Produkt = props => {
-  const [produkt, setProdukt] = useState({});
+  const [produkt, setProdukt] = useState([]);
   const [recensioner, setRecensioner] = useState([]);
   const [loading, setLoading] = useState(false);
   const [produktLager, updateProduktLager] = useState(0);
@@ -43,7 +43,6 @@ const Produkt = props => {
   ) : (
     <Fragment>
       <h1 className="text-center">Produktens detalj</h1>
-      <h2>{produkt.namn}</h2>
       <Detaljerat produktObj= {produkt}/>
     </Fragment>
   );
@@ -51,39 +50,3 @@ const Produkt = props => {
 
 export default Produkt;
 
-/*********************************/
-
-// const Produkt = () => {
-//      const [loading, setLoading] = useState(false);
-//      const [produktId, setProduktId] = useState('');
-//         setProduktId(()=>{
-//             return window.location.pathname.split("/")[2];
-//         });
-
-//      useEffect(() => {
-
-//        const getCockpitProdukterna = async () => {
-//         if(window.location.pathname.split("/")[2])
-//          setLoading(true);
-//          const result = await axios.get(
-//            `http://localhost:8080/api/collections/get/produkterna?filter[_id]=${produktId}`
-//          );
-//          console.log(result);
-//          //storeArticles(result.data.entries);
-//          setLoading(false);
-//        };
-//        getCockpitProdukterna();
-//      }, [produktId]);
-
-//   return (
-//     <Fragment>
-
-//       <h1 className="text-center">Produktens detalj</h1>
-//     </Fragment>
-//   );
-// };
-
-// export default Produkt;
-
-// //  `http://localhost:8080/api/collections/get/produkterna?filter[_id]=${produktId}`
-// window.location.pathname.split("/")[2];
