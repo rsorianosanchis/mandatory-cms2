@@ -6,12 +6,16 @@ import Spinner from "./spinner.js";
 import Pagination from "./pagination.js";
 
 const Produkterna = () => {
+  //
   const [produkterna, setProdukterna] = useState([]);
   const [loading, setLoading] = useState(false);
   const [dolja,setDolja] = useState(false);
+  //const [iLager,setILager] = useState({produktId:'',minus:''})
   //
   const [currentPage, setCurrentPage] = useState(1);
   const [produkterPerSidan, setProdukterSidan] = useState(5);
+  //
+
 
   useEffect(() => {
     const getCockpitProdukterna = async () => {
@@ -37,11 +41,14 @@ const Produkterna = () => {
   //change page
   const paginate = pageNumber => setCurrentPage(pageNumber);
   const setAntal = antal => setProdukterSidan(antal);
+  //
+  //lagersaldo kontroll (_id /och/ antal av köpte)
+  //const kontrolLager = dataLager => setILager (dataLager);
   
 
   return (
     <Fragment>
-      <h3 className="text-center" >List av produkterna</h3>
+      <h3 className="text-center">List av produkterna</h3>
       <form action="#">
         <p>
           <label>
@@ -50,9 +57,7 @@ const Produkterna = () => {
               className="filled-in"
               onChange={doljaProdukt}
             />
-            <span style={{fontSize:'16px'}}>
-              Visa inte utan lager
-            </span>
+            <span style={{ fontSize: "16px" }}>Visa inte utan lager</span>
           </label>
         </p>
       </form>

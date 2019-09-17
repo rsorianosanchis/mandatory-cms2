@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Enkelt = ({ namn, pris, bild, id }) => {
+
+
+const Enkelt = ({ namn, pris, bild,id}) => {
   return (
     <li className="col s12 m7" refsearch={namn}>
       <div className="card medium">
