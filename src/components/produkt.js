@@ -30,12 +30,23 @@ const Produkt = props => {
     };
     //
     const getProduktRecensioner = async () => {
+      setRecensioner([]);
       const getRecensioner = await axios.get(
         `http://localhost:8080/api/collections/get/recensioner`
       );
       console.log(getRecensioner.data.entries);
-      const result = getRecensioner.data.entries.map(item => item.produkt_ref._id === produkt._id)
-      setRecensioner(result);
+      /*const result = getRecensioner.data.entries.map(item =>console.log(item.produkt_ref._id)
+      )*/
+      getRecensioner.data.entries.map(item=>{
+        if(item.produkt_ref._id === id){
+          console.log(item);
+          recensioner.push(item)
+          console.log(recensioner);
+          
+        }
+      })
+      
+      
       
       
     };
