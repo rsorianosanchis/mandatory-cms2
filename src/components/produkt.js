@@ -34,9 +34,13 @@ const Produkt = props => {
         `http://localhost:8080/api/collections/get/recensioner`
       );
       console.log(getRecensioner.data.entries);
-      setRecensioner(getRecensioner.data.entries);
+      const result = getRecensioner.data.entries.map(item => item.produkt_ref._id === produkt._id)
+      setRecensioner(result);
+      
+      
     };
     getProduktData();
+    
   }, []);
 
   return loading ? (

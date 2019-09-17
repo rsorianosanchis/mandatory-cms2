@@ -4,9 +4,11 @@ import { Link, Redirect } from "react-router-dom";
 const ReactMarkdown = require("react-markdown");
 
 const Recensioner = ({produktId,recensioner}) => {
-   // const [gallery, setGallery] = useState([]);
+   const [produktRecesioner, setProduktRecesioner] = useState([]);
 
     useEffect(() => {
+
+        
         console.log(produktId);
         console.log(recensioner);
         
