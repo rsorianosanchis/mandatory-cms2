@@ -26,7 +26,7 @@ const Produkt = (props) => {
       );
       console.log(getProdukt.data.entries[0]);
       setProdukt(getProdukt.data.entries[0]);
-      
+      getProduktRecensioner();
       setLoading(false);
     };
 
@@ -34,13 +34,12 @@ const Produkt = (props) => {
       const getRecensioner = await axios.get(
         `http://localhost:8080/api/collections/get/recensioner`
       );
-      const produktRecensioner = getRecensioner.map(recension => recension.namn === produkt.namn)
-      console.log(produktRecensioner);
+      //const produktRecensioner = getRecensioner.map(recension => recension.namn === produkt.namn)
+      console.log(getRecensioner.data.entries);
+      setRecensioner(getRecensioner.data.entries);
       
     }
-    //
     getProduktData();
-    getProduktRecensioner();
   }, []);
 
   return (

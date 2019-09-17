@@ -28,7 +28,7 @@ const Produkterna = () => {
       setLoading(false);
     };
     getCockpitProdukterna();
-  }, [dolja]);
+  }, []);
 
   const doljaProdukt = e =>{
     console.log(e.target.checked);
