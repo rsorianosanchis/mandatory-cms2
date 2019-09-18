@@ -37,17 +37,20 @@ const Produkt = props => {
       console.log(getRecensioner.data.entries);
       /*const result = getRecensioner.data.entries.map(item =>console.log(item.produkt_ref._id)
       )*/
+      const x = [];
       getRecensioner.data.entries.map(item => {
         
         if (item.produkt_ref._id === id) {
           console.log("yes inne");
           console.log(item);
     
-          recensioner.push(item)
+          x.push(item)
           
           console.log(recensioner);
         }
       });
+
+      setRecensioner(x);
     };
     getProduktData();
   }, []);

@@ -7,7 +7,8 @@ const Recension = ({ recensioner }) => {
 
   useEffect(() => {}, []);
 
-  return recensioner.map((recension, index) => {
+  console.log(recensioner[0]);
+  const r = recensioner.map((recension, index) => {
     return (
       <div key={index}>
         <div className="card border-dark mb-3" style={{ maxwidth: "20rem" }}>
@@ -22,6 +23,9 @@ const Recension = ({ recensioner }) => {
       </div>
     );
   });
+
+
+  return <>{r}</>;
 };
 
 export default Recension;
