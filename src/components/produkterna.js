@@ -9,13 +9,12 @@ const Produkterna = () => {
   //
   const [produkterna, setProdukterna] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [dolja,setDolja] = useState(false);
+  const [dolja, setDolja] = useState(false);
   //const [iLager,setILager] = useState({produktId:'',minus:''})
   //
   const [currentPage, setCurrentPage] = useState(1);
   const [produkterPerSidan, setProdukterSidan] = useState(5);
   //
-
 
   useEffect(() => {
     const getCockpitProdukterna = async () => {
@@ -30,36 +29,56 @@ const Produkterna = () => {
     getCockpitProdukterna();
   }, []);
 
-  const doljaProdukt = e =>{
+  const doljaProdukt = e => {
     console.log(e.target.checked);
     setDolja(e.target.checked);
   };
+
+  const search = e =>{
+    console.log(e.target.value);
+    
+
+  }
+    
+
+  
   //
   const indexOfLastProdukt = currentPage * produkterPerSidan;
   const indexOfFirstProdukt = indexOfLastProdukt - produkterPerSidan;
-  const currentProdukterna = produkterna.slice(indexOfFirstProdukt, indexOfLastProdukt);
+  const currentProdukterna = produkterna.slice(
+    indexOfFirstProdukt,
+    indexOfLastProdukt
+  );
   //change page
   const paginate = pageNumber => setCurrentPage(pageNumber);
   const setAntal = antal => setProdukterSidan(antal);
   //
   //lagersaldo kontroll (_id /och/ antal av köpte)
   //const kontrolLager = dataLager => setILager (dataLager);
-  
 
   return (
     <Fragment>
       <h3 className="text-center"></h3>
-      <form action="#">
-        <p>
+      <form action="#" className='row'>
+        <div className="input-field col s5">
+          <i className="material-icons prefix">search</i>
+          <input 
+          id="icon_prefix" 
+          type="text" 
+          className="validate2"
+          onChange={search} />
+          <label htmlFor="icon_prefix">Namns produkt</label>
+        </div>
+        <div className="input-field col s5">
           <label>
             <input
               type="checkbox"
               className="filled-in"
               onChange={doljaProdukt}
             />
-            <span style={{ fontSize: "16px" }}>Visa inte utan lager</span>
+            <span style={{ fontSize: "15px" }}>Visa inte utan lager</span>
           </label>
-        </p>
+        </div>
       </form>
       <ul className="row">
         {loading ? (
