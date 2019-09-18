@@ -48,7 +48,7 @@ const Produkterna = () => {
 
   return (
     <Fragment>
-      <h3 className="text-center">List av produkterna</h3>
+      <h3 className="text-center"></h3>
       <form action="#">
         <p>
           <label>

@@ -3,8 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import Spinner from "./spinner.js";
 import Detaljerat from "./detaljerat.js";
-import Recensioner from './recensioner.js';
-
+import Recension from "./recension.js";
 
 const Produkt = props => {
   const [produkt, setProdukt] = useState([]);
@@ -22,10 +21,11 @@ const Produkt = props => {
       setLoading(true);
       const getProdukt = await axios.get(
         `http://localhost:8080/api/collections/get/produkterna?filter[_id]=${id}`
-      );
-      console.log(getProdukt.data.entries[0]);
-      setProdukt(getProdukt.data.entries[0]);
-      getProduktRecensioner();
+        );
+        console.log(getProdukt.data.entries[0]);
+        setProdukt(getProdukt.data.entries[0]);
+        getProduktRecensioner();
+        //console.log(produkt);
       setLoading(false);
     };
     //
@@ -37,33 +37,30 @@ const Produkt = props => {
       console.log(getRecensioner.data.entries);
       /*const result = getRecensioner.data.entries.map(item =>console.log(item.produkt_ref._id)
       )*/
-      getRecensioner.data.entries.map(item=>{
-        if(item.produkt_ref._id === id){
+      getRecensioner.data.entries.map(item => {
+        
+        if (item.produkt_ref._id === id) {
+          console.log("yes inne");
           console.log(item);
+    
           recensioner.push(item)
-          console.log(recensioner);
           
+          console.log(recensioner);
         }
-      })
-      
-      
-      
-      
+      });
     };
     getProduktData();
-    
   }, []);
 
   return loading ? (
     <Spinner />
   ) : (
     <Fragment>
-      <h1 className="text-center">Produktens detalj</h1>
+      <h1 className="text-center"></h1>
       <Detaljerat produktObj={produkt} />
-      <Recensioner produktId={produkt._id} recensioner={recensioner} />
+      <Recension recensioner={recensioner} />
     </Fragment>
   );
 };
 
 export default Produkt;
-
