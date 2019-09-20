@@ -9,7 +9,7 @@ const Produkt = props => {
   const [produkt, setProdukt] = useState([]);
   const [recensioner, setRecensioner] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [produktLager, updateProduktLager] = useState(0);
+  
 
   // falta poner en array  de ue efect si hay camnios en id o no
   // falta condicional en render de , si loading es true mostrar cargando

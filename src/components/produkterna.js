@@ -11,7 +11,7 @@ const Produkterna = () => {
   const [loading, setLoading] = useState(false);
   const [dolja, setDolja] = useState(false);
   const [searchNamn,setSearchNamn] = useState('');
-  //const [iLager,setILager] = useState({produktId:'',minus:''})
+  //
   //
   const [currentPage, setCurrentPage] = useState(1);
   const [produkterPerSidan, setProdukterSidan] = useState(5);
