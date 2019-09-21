@@ -11,12 +11,12 @@ const Produkterna = () => {
   const [loading, setLoading] = useState(false);
   const [dolja, setDolja] = useState(false);
   const [searchNamn, setSearchNamn] = useState("");
+  const [antalInfo, setAntalInfo] = useState(0);
   //
   //
   const [currentPage, setCurrentPage] = useState(1);
   const [produkterPerSidan, setProdukterSidan] = useState(5);
   //
-
   useEffect(() => {
     const getCockpitProdukterna = async () => {
       setLoading(true);
@@ -29,19 +29,33 @@ const Produkterna = () => {
     };
     getCockpitProdukterna();
   }, [searchNamn]);
-
+  //
+  useEffect(() => {
+    const temp = localStorage.getItem("korg");
+    let x = [];
+    let tempAntal = 0;
+    if (temp) {
+      x = JSON.parse(temp);
+      x.map(item => {
+        tempAntal = tempAntal + item.itemAntal;
+      });
+    }
+    console.log(tempAntal);
+    setAntalInfo(tempAntal);
+    //setKorgAntalIcon(kor  gAntalIcon);
+  }, []);
+  //
   const doljaProdukt = e => {
     console.log(e.target.checked);
     setDolja(e.target.checked);
   };
-
+  //
   const search = e => {
     console.log(e.target.value);
     const namn = e.target.value;
     setSearchNamn(namn);
     //http://localhost:8080/api/collections/get/produkterna?filter[namn][$regex]=npm
   };
-
   //
   const indexOfLastProdukt = currentPage * produkterPerSidan;
   const indexOfFirstProdukt = indexOfLastProdukt - produkterPerSidan;
@@ -53,9 +67,6 @@ const Produkterna = () => {
   const paginate = pageNumber => setCurrentPage(pageNumber);
   const setAntal = antal => setProdukterSidan(antal);
   //
-  //lagersaldo kontroll (_id /och/ antal av köpte)
-  //const kontrolLager = dataLager => setILager (dataLager);
-
   return (
     <Fragment>
       <h3 className="text-center"></h3>
@@ -79,6 +90,18 @@ const Produkterna = () => {
             />
             <span style={{ fontSize: "15px" }}>Visa inte utan lager</span>
           </label>
+        </div>
+        <div className="input-field col s2 right">
+          <p
+            style={{
+              marginTop: "13px",
+              fontSize: "15px",
+              textAlign: "right",
+              color: "#9E9EB7"
+            }}
+          >
+            Du har {antalInfo} produkt i korg
+          </p>
         </div>
       </form>
       <ul className="row">

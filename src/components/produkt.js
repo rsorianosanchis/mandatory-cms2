@@ -59,7 +59,6 @@ const Produkt = props => {
     <Spinner />
   ) : (
     <Fragment>
-      <h1 className="text-center"></h1>
       <Detaljerat produktObj={produkt} />
       <Recension recensioner={recensioner} />
     </Fragment>

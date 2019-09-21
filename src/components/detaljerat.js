@@ -14,7 +14,7 @@ const Detaljerat = ({ produktObj }) => {
     produktObj.lagersaldo === "0" ? btnDis : btn
   );
   const [redirect, setRedirect] = useState(false);
-  const [korgItems,setKorgItems] = useState([]);
+  
  
 
   useEffect(() => {

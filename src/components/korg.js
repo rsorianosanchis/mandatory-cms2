@@ -1,12 +1,18 @@
-import React, { Fragment,useState,useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 //import Header from "./header.js";
 
 const Korg = () => {
-  const localKorg = localStorage.getItem('korg');
-  const korg = JSON.parse(localKorg)
-  const [totalKopt,setTotalKopt] = useState(0);
-  
+  const localKorg = localStorage.getItem("korg");
+  const korg = JSON.parse(localKorg);
+  let total = 0;
+  korg.map(item=>{
+    total=total+item.prisTotal;
+  })
 
+  useEffect(()=>{
+
+  })
+  
   return (
     <Fragment>
       <h1 className="text-center">Korg</h1>
@@ -21,24 +27,21 @@ const Korg = () => {
         </thead>
 
         <tbody>
-
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-            <td>ss</td>
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-            <td>ss</td>
-          </tr>
+          {korg.map((produkt,index )=>{
+              
+              return <tr key={index}>
+                <td>{produkt.namn}</td>
+                <td>{produkt.itemAntal}</td>
+                <td>{produkt.pris}</td>
+                <td>{produkt.prisTotal}</td>
+              </tr>}
+            )
+          }
           <tr>
             <td></td>
             <td></td>
             <th>TOTAL KÖPT</th>
-            <td>KR</td>
+            <td>{total} KR</td>
           </tr>
         </tbody>
       </table>
