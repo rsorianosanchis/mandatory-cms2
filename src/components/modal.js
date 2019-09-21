@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Bekraft = ({ namn, adress }) => {
+  let x = [];
+  localStorage.setItem("korg", JSON.stringify(x));
+
   return (
     <div class="row">
       <div class="col s12 m6">
