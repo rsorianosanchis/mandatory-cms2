@@ -4,36 +4,43 @@ import { log } from "util";
 const ReactMarkdown = require("react-markdown");
 
 const Detaljerat = ({ produktObj }) => {
-  const btn =
-    "btn waves-effect waves-light light-green lighten-2 left ";
+  const btn = "btn waves-effect waves-light light-green lighten-2 left ";
   const btnDis =
     "btn waves-effect waves-light light-green lighten-2 left disabled ";
   const [gallery, setGallery] = useState([]);
   const [produktLager, updateProduktLager] = useState(produktObj.lagersaldo);
-  const [antal,setAntal] = useState(0);
-  const [btnStatus, setBtnStatus] = useState(btn);
+  const [antal, setAntal] = useState(0);
+  const [btnStatus, setBtnStatus] = useState(
+    produktObj.lagersaldo === "0" ? btnDis : btn
+  );
+  const [redirect,setRedirect] = useState(false);
 
   useEffect(() => {
     setGallery([]);
     setGallery(produktObj.bilder);
-   
   }, []);
 
-  const handleClick = (e)=>{
+  const handleClick = e => {
     e.preventDefault();
-    updateProduktLager(produktLager-1);
-    setAntal(antal+1);
+    updateProduktLager(produktLager - 1);
+    setAntal(antal + 1);
     console.log(e);
-     if (produktLager === 1) {
-       console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-
-       setBtnStatus(btnDis);
-     }
+    if (produktLager === 1) {
+      setBtnStatus(btnDis);
+    }
     e.stopPropagation();
+  };
+  const handleClickConfirm = e => {
+    e.preventDefault();
+
+      setRedirect(true);
     
-  }
-  
+    
+    e.stopPropagation();
+  };
+
   return (
+    !redirect?
     <div className="card mb-3">
       <div>
         <h3 className="card-header">{produktObj.namn}</h3>
@@ -60,24 +67,23 @@ const Detaljerat = ({ produktObj }) => {
       </div>
       <div className="card-footer text-muted">
         {
-          <a
-            href="!#"
-            className={btnStatus}
-            onClick={handleClick}
-          >
+          <a href="!#" className={btnStatus} onClick={handleClick}>
             Lägga till
           </a>
         }
 
         <a
-          href="#"
+          href="!#"
           className=" btn waves-effect waves-light light-green lighten-2 right "
-          
+          onClick={handleClickConfirm}
         >
           Confirm {antal}
         </a>
       </div>
     </div>
+    :<Redirect to={{
+      pathname: '/',
+      }}/>
   );
 };
 

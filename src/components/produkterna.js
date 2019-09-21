@@ -10,7 +10,7 @@ const Produkterna = () => {
   const [produkterna, setProdukterna] = useState([]);
   const [loading, setLoading] = useState(false);
   const [dolja, setDolja] = useState(false);
-  const [searchNamn,setSearchNamn] = useState('');
+  const [searchNamn, setSearchNamn] = useState("");
   //
   //
   const [currentPage, setCurrentPage] = useState(1);
