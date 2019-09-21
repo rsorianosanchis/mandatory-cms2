@@ -13,7 +13,9 @@ const Detaljerat = ({ produktObj }) => {
   const [btnStatus, setBtnStatus] = useState(
     produktObj.lagersaldo === "0" ? btnDis : btn
   );
-  const [redirect,setRedirect] = useState(false);
+  const [redirect, setRedirect] = useState(false);
+  const [korgItems,setKorgItems] = useState([]);
+ 
 
   useEffect(() => {
     setGallery([]);
@@ -32,15 +34,38 @@ const Detaljerat = ({ produktObj }) => {
   };
   const handleClickConfirm = e => {
     e.preventDefault();
+    
+    
+    let x = [];
+    const storage = localStorage.getItem('korg');
+    if(storage){
+      x = JSON.parse(storage);
+      console.log(x);
+      
+    }
+    x.push({
+      itemId:produktObj._id,
+      namn: produktObj.namn,
+      itemAntal: antal,
+      pris: produktObj.pris,
+      prisTotal: antal * produktObj.pris
+    });
+    if(x[0].itemAntal !== 0){
 
-      setRedirect(true);
+      //local storage info
+      console.log(x);
+
+      localStorage.setItem('korg',JSON.stringify(x))
+    }
     
+
     
+    setRedirect(true);
+
     e.stopPropagation();
   };
 
-  return (
-    !redirect?
+  return !redirect ? (
     <div className="card mb-3">
       <div>
         <h3 className="card-header">{produktObj.namn}</h3>
@@ -81,9 +106,13 @@ const Detaljerat = ({ produktObj }) => {
         </a>
       </div>
     </div>
-    :<Redirect to={{
-      pathname: '/',
-      }}/>
+  ) : (
+    <Redirect
+      to={{
+        pathname: "/",
+        state: { datatest: antal }
+      }}
+    />
   );
 };
 

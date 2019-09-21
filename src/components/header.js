@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import {NavLink } from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
+
+  useEffect(()=>{
+  
+    //setKorgAntalIcon(korgAntalIcon);
+
+  },[]);
+
   return (
     <nav>
       <div className="nav-wrapper">
