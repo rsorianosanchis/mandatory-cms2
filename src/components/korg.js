@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { Link, Redirect } from "react-router-dom";
 //import Header from "./header.js";
 
 const Korg = () => {
@@ -15,7 +16,6 @@ const Korg = () => {
   
   return (
     <Fragment>
-      <h1 className="text-center">Korg</h1>
       <table>
         <thead>
           <tr>
@@ -27,21 +27,25 @@ const Korg = () => {
         </thead>
 
         <tbody>
-          {korg.map((produkt,index )=>{
-              
-              return <tr key={index}>
+          {korg.map((produkt, index) => {
+            return (
+              <tr key={index}>
                 <td>{produkt.namn}</td>
                 <td>{produkt.itemAntal}</td>
                 <td>{produkt.pris}</td>
                 <td>{produkt.prisTotal}</td>
-              </tr>}
-            )
-          }
+              </tr>
+            );
+          })}
           <tr>
-            <td></td>
+            <td>
+              <Link className=" btn waves-effect waves-light light-green lighten-2  " to='/formul'>
+                BETALA
+              </Link>
+            </td>
             <td></td>
             <th>TOTAL KÖPT</th>
-            <td>{total} KR</td>
+            <th>{total} KR</th>
           </tr>
         </tbody>
       </table>
