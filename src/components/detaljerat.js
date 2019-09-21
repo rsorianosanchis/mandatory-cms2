@@ -1,6 +1,5 @@
-import React, { useState, useEffect, Fragment } from "react";
-import { Link, Redirect } from "react-router-dom";
-import { log } from "util";
+import React, { useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 const ReactMarkdown = require("react-markdown");
 
 const Detaljerat = ({ produktObj }) => {
@@ -14,8 +13,6 @@ const Detaljerat = ({ produktObj }) => {
     produktObj.lagersaldo === "0" ? btnDis : btn
   );
   const [redirect, setRedirect] = useState(false);
-  
- 
 
   useEffect(() => {
     setGallery([]);
@@ -34,32 +31,27 @@ const Detaljerat = ({ produktObj }) => {
   };
   const handleClickConfirm = e => {
     e.preventDefault();
-    
-    
+
     let x = [];
-    const storage = localStorage.getItem('korg');
-    if(storage){
+    const storage = localStorage.getItem("korg");
+    if (storage) {
       x = JSON.parse(storage);
       console.log(x);
-      
     }
     x.push({
-      itemId:produktObj._id,
+      itemId: produktObj._id,
       namn: produktObj.namn,
       itemAntal: antal,
       pris: produktObj.pris,
       prisTotal: antal * produktObj.pris
     });
-    if(x[0].itemAntal !== 0){
-
+    if (x[0].itemAntal !== 0) {
       //local storage info
       console.log(x);
 
-      localStorage.setItem('korg',JSON.stringify(x))
+      localStorage.setItem("korg", JSON.stringify(x));
     }
-    
 
-    
     setRedirect(true);
 
     e.stopPropagation();

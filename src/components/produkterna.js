@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
-//import Header from "./header.js";
 import Enkelt from "./enkelt.js";
 import Spinner from "./spinner.js";
 import Pagination from "./pagination.js";
@@ -69,7 +68,6 @@ const Produkterna = () => {
   //
   return (
     <Fragment>
-      <h3 className="text-center"></h3>
       <form action="#" className="row">
         <div className="input-field col s5">
           <i className="material-icons prefix">search</i>

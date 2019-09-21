@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useEffect } from "react";
 //import { Link, Redirect } from "react-router-dom";
 const ReactMarkdown = require("react-markdown");
 
@@ -23,7 +23,6 @@ const Recension = ({ recensioner }) => {
       </div>
     );
   });
-
 
   return <>{r}</>;
 };

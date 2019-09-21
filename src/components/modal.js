@@ -15,7 +15,7 @@ const Bekraft = ({ namn, adress }) => {
             <br />
             <p>{adress}</p>
           </div>
-          <div class="card-action">
+          <div className="card-action">
             <Link
               to="/"
               className="modal-close waves-effect waves-green btn-flat"

@@ -1,14 +1,12 @@
-import React, { useState, useEffect, Fragment } from "react";
-import {NavLink } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
-  
-
   return (
     <nav>
       <div className="nav-wrapper">
         <NavLink to="/" className="brand-logo left">
-          Geeks Butiken 
+          Geeks Butiken
         </NavLink>
         <ul id="nav-mobile" className="right">
           <li>

@@ -1,19 +1,15 @@
-import React, { Fragment, useState, useEffect } from "react";
-import { Link, Redirect } from "react-router-dom";
-//import Header from "./header.js";
-
+import React, { Fragment, useEffect } from "react";
+import { Link } from "react-router-dom";
 const Korg = () => {
   const localKorg = localStorage.getItem("korg");
   const korg = JSON.parse(localKorg);
   let total = 0;
-  korg.map(item=>{
-    total=total+item.prisTotal;
-  })
+  korg.map(item => {
+    total = total + item.prisTotal;
+  });
 
-  useEffect(()=>{
+  useEffect(() => {});
 
-  })
-  
   return (
     <Fragment>
       <table>
@@ -39,7 +35,10 @@ const Korg = () => {
           })}
           <tr>
             <td>
-              <Link className=" btn waves-effect waves-light light-green lighten-2  " to='/formul'>
+              <Link
+                className=" btn waves-effect waves-light light-green lighten-2  "
+                to="/formul"
+              >
                 BETALA
               </Link>
             </td>
